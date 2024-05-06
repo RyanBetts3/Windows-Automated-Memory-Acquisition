@@ -1,4 +1,4 @@
-Memory Acquisition Tool
+Memory Acquisition Tool - Note this is still in testing
 
 This tool is designed to automate memory acquisition using WinPMEM and save the memory dump onto a USB drive.
 
