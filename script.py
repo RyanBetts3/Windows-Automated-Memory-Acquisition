@@ -5,7 +5,7 @@ import ctypes
 import logging
 from tkinter import Tk, filedialog, messagebox
 
-# Configure logging
+# Configure logging 
 logging.basicConfig(filename='memory_acquisition.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def is_admin():
