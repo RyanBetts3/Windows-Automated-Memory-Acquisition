@@ -8,20 +8,16 @@ from tkinter import Tk, filedialog, messagebox
 # Configure logging 
 logging.basicConfig(filename='memory_acquisition.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Check if the script is running with administrative privileges.
 def is_admin():
-    """
-    Check if the script is running with administrative privileges.
-    """
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except Exception as e:
         logging.error(f"Failed to check administrative privileges: {str(e)}")
         return False
 
+# Attempt to run the script with administrative privileges.
 def run_as_admin():
-    """
-    Attempt to run the script with administrative privileges.
-    """
     if not is_admin():
         try:
             script_path = os.path.abspath(__file__)
@@ -31,11 +27,9 @@ def run_as_admin():
             logging.error(f"Failed to run the script with administrative privileges: {str(e)}")
         sys.exit(1)
 
+# Acquire memory dump using WinPMEM.
 def acquire_memory_dump(output_path):
-    """
-    Acquire memory dump using WinPMEM.
-    """
-    winpmem_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'winpmem.exe')
+    winpmem_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'winpmem_mini_x64_rc2.exe')
     if not os.path.isfile(winpmem_path):
         logging.error("Error: winpmem.exe not found.")
         return False
@@ -52,10 +46,8 @@ def acquire_memory_dump(output_path):
 
     return False
 
+# Main function to run the memory acquisition script.
 def main():
-    """
-    Main function to run the memory acquisition script.
-    """
     run_as_admin()
 
     root = Tk()
